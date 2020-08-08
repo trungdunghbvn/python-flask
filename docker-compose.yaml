@@ -1,0 +1,22 @@
+version: "3.7"
+services:
+  freeway:
+    image: mysql:5.7.25
+    container_name: mysql
+    hostname: mysql
+    networks:
+      - default
+    volumes:
+      - .docker/data/db:/var/lib/mysql
+    environment:
+      - MYSQL_USER=techyowls
+      - MYSQL_PASSWORD=techyowls
+      - MYSQL_ROOT_PASSWORD=techyowls
+      - MYSQL_DATABASE=flask_rest
+    ports:
+      - "3306:3306"
+    command: mysqld --lower_case_table_names=1 --skip-ssl --character_set_server=utf8mb4 --explicit_defaults_for_timestamp
+    restart: always
+
+volumes:
+    .docker:
